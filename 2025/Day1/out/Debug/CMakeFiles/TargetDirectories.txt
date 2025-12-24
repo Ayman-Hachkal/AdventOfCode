@@ -1,3 +1,0 @@
-/Users/aymanhachkal/Projects/AdventOfCode/2025/Day1/out/Debug/CMakeFiles/AdventOfCode.dir
-/Users/aymanhachkal/Projects/AdventOfCode/2025/Day1/out/Debug/CMakeFiles/edit_cache.dir
-/Users/aymanhachkal/Projects/AdventOfCode/2025/Day1/out/Debug/CMakeFiles/rebuild_cache.dir
