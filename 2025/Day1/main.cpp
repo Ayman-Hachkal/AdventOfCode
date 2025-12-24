@@ -25,6 +25,7 @@ int main() {
     for (int i{1}; i < strRotate.size(); i++){
       rotateCountString += strRotate[i];
     }
+
     int rotateCount{std::stoi(rotateCountString)};
 
     int zeroCheck {currentPosition};
@@ -37,15 +38,20 @@ int main() {
 
     while (currentPosition >= 100 || currentPosition < 0) {
       int before {currentPosition};
-      if (currentPosition > 99) {
-        currentPosition = currentPosition - 100;
-        passcode++;
-      } else if (currentPosition < 0) {
-        currentPosition = currentPosition + 100;
+      if (currentPosition > 100 || (currentPosition < 0 && zeroCheck != 0)) {
         passcode++;
       }
+      if (currentPosition > 99) {
+        currentPosition = currentPosition - 100;
+      } else if (currentPosition < 0) {
+        currentPosition = currentPosition + 100;
+      }
+
     }
-    if 
+    if (currentPosition == 0) {
+      passcode++;
+    }
+    std::cout << "pin: " << currentPosition << "\n";
   }
   std::cout << "Passcode = "<< passcode << "\n";
 
