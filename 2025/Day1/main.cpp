@@ -1,10 +1,10 @@
+#include <exception>
 #include <ios>
-#include <iostream>
 #include <fstream>
 #include <iostream>
 
 int main() {
-  std::ifstream inf{"resources/inputtest.txt"};
+  std::ifstream inf{"resources/input.txt"};
 
   if (!inf) {
     std::cout << "Error";
@@ -19,7 +19,6 @@ int main() {
   while (inf >> strRotate){
     //Get the direction
     char letter{strRotate[0]};
-    std::cout << strRotate << "\n";
 
     std::string rotateCountString{};
     for (int i{1}; i < strRotate.size(); i++){
@@ -27,31 +26,26 @@ int main() {
     }
 
     int rotateCount{std::stoi(rotateCountString)};
+    bool trackOne {false};
+    bool track99 {false};
 
-    int zeroCheck {currentPosition};
-    if (letter == 'R') { 
-      currentPosition += rotateCount;
-    }
-    else if (letter == 'L') { 
-      currentPosition -= rotateCount;
-    }
-
-    while (currentPosition >= 100 || currentPosition < 0) {
-      int before {currentPosition};
-      if (currentPosition > 100 || (currentPosition < 0 && zeroCheck != 0)) {
+    for (int i {0}; i < abs(rotateCount); i++) {
+      if (letter == 'R') {
+        currentPosition++;
+        if (currentPosition > 99) {
+          currentPosition = 0;
+        }
+      }
+      else {
+        currentPosition--;
+        if (currentPosition < 0) {
+          currentPosition = 99;
+        }
+      }
+      if (currentPosition == 0) {
         passcode++;
       }
-      if (currentPosition > 99) {
-        currentPosition = currentPosition - 100;
-      } else if (currentPosition < 0) {
-        currentPosition = currentPosition + 100;
-      }
-
     }
-    if (currentPosition == 0) {
-      passcode++;
-    }
-    std::cout << "pin: " << currentPosition << "\n";
   }
   std::cout << "Passcode = "<< passcode << "\n";
 
